@@ -1,0 +1,45 @@
+psql
+
+CREATE TABLE Student(
+  StudentID TEXT PRIMARY KEY,
+  StudentName TEXT
+);
+
+\copy Student FROM '/home/mint/Documents/database/Grade/Student.csv' DELIMITER ',' CSV HEADER;
+
+
+CREATE TABLE Subject(
+  SubjectID TEXT PRIMARY KEY,
+  SubjectName TEXT,
+  Credit REAL
+);
+
+\copy Subject FROM '/home/mint/Documents/database/Grade/Subject.csv' DELIMITER ',' CSV HEADER;
+
+CREATE TABLE Enrolls(
+  StudentID TEXT references Student(StudentID),
+  SubjectID TEXT references Subject(SubjectID),
+  Grade TEXT,
+  Semester TEXT
+);
+
+\copy Enrolls FROM '/home/mint/Documents/database/Grade/Enrolls.csv' DELIMITER ',' CSV HEADER;
+
+
+
+
+16/2/2565
+ALTER TABLE Enrolls ADD COLUMN room TEXT;
+ALTER TABLE Enrolls ADD COLUMN Section TEXT;
+ALTER TABLE Enrolls ADD COLUMN StudyDay TEXT;
+ALTER TABLE Enrolls ADD COLUMN StudyTime TEXT;
+ALTER TABLE Enrolls ADD COLUMN TeacherID TEXT;
+ALTER TABLE Subject ADD COLUMN Organize TEXT;
+ALTER TABLE Subject ADD COLUMN FinalExamDate TEXT;
+ALTER TABLE Subject ADD COLUMN MidExamDate TEXT;
+
+
+CREATE TABLE Teacher(TeacherID TEXT,ShortTitle Text);
+
+
+

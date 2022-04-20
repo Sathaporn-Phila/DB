@@ -1,0 +1,7 @@
+sudo mysql
+SET GLOBAL validate_password.length = 4;
+SET GLOBAL validate_password.policy=LOW;
+SET GLOBAL connect_timeout = 6000;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'nuinee';
+FLUSH PRIVILEGES;
+ลอง mysql -u root -p ตามด้วยรหัสผ่าน nuinee ถ้าได้ก็รันสคริปได้
